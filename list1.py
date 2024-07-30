@@ -14,8 +14,11 @@
 # Note: python does not have a ++ operator, but += works.
 
 def match_ends(words):
-    # +++your code here+++
-    return
+    counter = 0 # I originally did not have this and kept getting an error. This is necessary to start the count at zero.
+    for word in words:  # this for loop will go through each word in the list.
+        if len(word) >= 2 and word[0] == word[-1]:  # this if statement is checking two conditions. First, it makes sure that the word is at least 2 or more characters, and it checks if the first character (index [0]) and last character (index [-1]) are the same.
+            counter += 1 # if the above conditions in the if statement are correct, then the counter goes up one increment.
+    return counter 
 
 
 # B. front_x
@@ -27,8 +30,21 @@ def match_ends(words):
 # before combining them.
 
 def front_x(words):
-    # +++your code here+++
-    return
+    x_word_list = []  # This list will store all the words starting with 'x'.
+    other_word_list = []  # This list will store all other words.
+
+    for word in words:  # This for loop will go through each word in the list. 
+        if word.startswith('x'):  # In this if statement, the .startswith function will check for every word that starts with x. 
+            x_word_list.append(word)  # If the condition is met in the if statement, then the .append function will add the word to x_word_list.
+        else:
+            other_word_list.append(word)  # If the condition in the if statement is not met, then the word will be added to the word to other_word_list.
+
+    x_word_list.sort()  # The .sort function is necessary to sort the words in each list.
+    other_word_list.sort() 
+    new_word_list = x_word_list + other_word_list # this will merge the two lists. Putting x_word_list puts all of the x words in the list before the other words. 
+
+    return new_word_list
+
 
 
 # C. sort_last
@@ -39,8 +55,9 @@ def front_x(words):
 # Hint: use a custom key= function to extract the last element form each tuple.
 
 def sort_last(tuples):
-    # +++your code here+++
-    return
+    new_list = sorted(tuples, key=lambda x: x[-1]) # in the new_last variable, I'm using the sorted function to sort the list of tuples. The lambda function is a small anonymous function that can have any number of arguments but can only have one expression. They are restricted to a single line of code. Here the key parameter is used to call on each list element prior to making a comparison. The lambda function takes a tuple 'x' and returns its last element x[-1].
+    return new_list
+
 
 
 # Simple provided test() function used in main() to print
